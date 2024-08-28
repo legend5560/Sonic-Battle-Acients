@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvfu1l4yt5c3m"]
+
+[ext_resource type="PackedScene" uid="uid://e3bf0aeb76kc" path="res://Models/original maps/holy_summit.blend" id="1_8u2r0"]
+[ext_resource type="Texture2D" uid="uid://cd0864pgo4x46" path="res://Models/original maps/textures/Holly_Summit.png" id="2_aa0xh"]
+[ext_resource type="PackedScene" uid="uid://irlpgd8spuet" path="res://Scenes/stages/invisible_walls.tscn" id="2_kbfp6"]
+[ext_resource type="Texture2D" uid="uid://dqq0np0b7jlxd" path="res://Models/original maps/textures/Holly_Summit_walls.png" id="3_oequv"]
+[ext_resource type="AudioStream" uid="uid://hgg1r0g8aep0" path="res://Audio/Sonic Battle Project Tracks/Stage themes/Techno Tundra Zone Final Mix.mp3" id="4_eq12r"]
+[ext_resource type="ArrayMesh" uid="uid://dmaa6yippg7qx" path="res://Models/Environments/snow.obj" id="5_nopwj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85cqm"]
+shading_mode = 0
+albedo_texture = ExtResource("2_aa0xh")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fx5qu"]
+shading_mode = 0
+albedo_texture = ExtResource("3_oequv")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d15wn"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.67451, 1, 1, 0.670588)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mqv4o"]
+emission_shape = 3
+emission_box_extents = Vector3(3, 3, 3)
+gravity = Vector3(-2, -2, 0)
+scale_min = 0.2
+scale_max = 0.5
+
+[node name="Holy_Summit" type="Node3D"]
+
+[node name="holy_summit" parent="." instance=ExtResource("1_8u2r0")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.243, -0.424047, -0.283)
+
+[node name="holy_summit" parent="holy_summit" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_85cqm")
+surface_material_override/1 = SubResource("StandardMaterial3D_fx5qu")
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("2_kbfp6")]
+transform = Transform3D(0.635, 0, 0, 0, 0.635, 0, 0, 0, 0.635, -0.242938, -0.578437, -0.283362)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_eq12r")
+volume_db = -15.0
+autoplay = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.41071, 0)
+material_override = SubResource("StandardMaterial3D_d15wn")
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_mqv4o")
+draw_pass_1 = ExtResource("5_nopwj")
+
+[editable path="holy_summit"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2q742677pmue"]
+
+[ext_resource type="Script" path="res://Scripts/MovingPlatform.gd" id="1_6as8w"]
+
+[node name="RotatingPlatform" type="MeshInstance3D"]
+script = ExtResource("1_6as8w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

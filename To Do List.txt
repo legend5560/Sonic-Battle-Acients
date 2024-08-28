@@ -1,0 +1,58 @@
+Development Topics
+	List of things to be completed for the current scope
+
+	legend:
+		⏳️: on going, someone is taking care of it
+
+	SAGE 2024 Scope
+
+		[ check the "To Do" channel for more recent updates ]
+
+		menu:
+	⏳️		is lacking the new design that was made;
+	⏳️		needs it’s title screen;
+			check if instantiates call should be multiplayer spawner instead
+
+		The bot might need:
+			other behaviours
+			pattern detection
+
+		check if there are other animations or collisions that need fixing or to be made;
+			upper needs a collider extension
+		
+		ring toss/throw:
+			should cause more damage
+			create cap to how far the player can go
+			check what happens when the player is close to the ring when moving
+			make an arc movement like in the original
+
+		stages and hubs need textures
+			sand ocean's geometry needs texture
+
+		create a solution to move the player out of the "infinite lifting camera lock"
+			detect if the velocity is increasing and the character is not moving
+				displace character and allow it to jump
+				or displace at random like the bots
+				or allow that 2 seconds placement selection like when falling in a pit
+		
+		input remap tab on the options menu:
+			allow joystick input or movement
+			create a save system
+				check if save system will work as webgl
+			save new remaped inputs
+			load new inputs map
+		
+		can't double tap for dash using joystick controller
+		
+		
+
+
+
+	Final Scope
+		have some way to save progress
+		
+		maybe have rings around the stage to collect
+			should they appear again after some time?
+
+		add volume control, graphics control, and accessibility on options menu
+		

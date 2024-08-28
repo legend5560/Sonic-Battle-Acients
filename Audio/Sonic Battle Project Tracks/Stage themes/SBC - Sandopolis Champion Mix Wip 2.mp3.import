@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://db3x4e2lljgvs"
+path="res://.godot/imported/SBC - Sandopolis Champion Mix Wip 2.mp3-7178d11d5678d379dbe69b7225b33808.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sonic Battle Project Tracks/Stage themes/SBC - Sandopolis Champion Mix Wip 2.mp3"
+dest_files=["res://.godot/imported/SBC - Sandopolis Champion Mix Wip 2.mp3-7178d11d5678d379dbe69b7225b33808.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=7.302
+bpm=0.0
+beat_count=0
+bar_beats=4

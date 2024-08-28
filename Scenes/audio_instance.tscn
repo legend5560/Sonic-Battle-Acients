@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cahashyrlgcg0"]
+
+[ext_resource type="Script" path="res://Scripts/simple_audio_queue_free.gd" id="1_hsfoq"]
+
+[node name="AudioInstance" type="Node3D"]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+script = ExtResource("1_hsfoq")
+
+[connection signal="finished" from="AudioStreamPlayer3D" to="AudioStreamPlayer3D" method="_on_finished"]

@@ -1,0 +1,152 @@
+[gd_scene load_steps=2 format=3 uid="uid://cylkg8du18u87"]
+
+[ext_resource type="Script" path="res://Scripts/network_menu.gd" id="1_1yn1b"]
+
+[node name="Network Menu" type="Control" node_paths=PackedStringArray("server_ip", "player_name", "ip_edit", "create_server_button", "join_server_button", "players_list", "connection_error_screen", "connection_error_text_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1yn1b")
+server_ip = NodePath("server_ip")
+player_name = NodePath("player_name")
+ip_edit = NodePath("IP")
+create_server_button = NodePath("CreateServer")
+join_server_button = NodePath("JoinServer")
+players_list = NodePath("players_list")
+connection_error_screen = NodePath("connection_error_screen")
+connection_error_text_node = NodePath("connection_error_screen/error")
+
+[node name="players_list" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -212.0
+offset_right = 126.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JoinServer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 113.0
+offset_right = 372.0
+offset_bottom = 191.0
+text = "Join Server"
+
+[node name="CreateServer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 230.0
+offset_right = 377.0
+offset_bottom = 308.0
+text = "Create Server"
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 512.0
+offset_right = 496.0
+offset_bottom = 592.0
+text = "Back"
+
+[node name="next_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 624.0
+offset_top = 512.0
+offset_right = 894.0
+offset_bottom = 590.0
+text = "Next"
+
+[node name="server_ip" type="TextEdit" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -368.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 88.0
+grow_horizontal = 2
+placeholder_text = "server IP"
+editable = false
+
+[node name="IP" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 870.0
+offset_top = 120.0
+offset_right = 1127.0
+offset_bottom = 183.0
+placeholder_text = "127.0.0.1"
+
+[node name="player_name" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 226.0
+offset_right = 1129.0
+offset_bottom = 289.0
+text = "player1"
+placeholder_text = "Name"
+
+[node name="ipLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 745.0
+offset_top = 127.0
+offset_right = 867.0
+offset_bottom = 171.0
+text = "IP Address:"
+
+[node name="nameLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 744.0
+offset_top = 234.0
+offset_right = 866.0
+offset_bottom = 278.0
+text = "Player Name:"
+
+[node name="connection_error_screen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="error" type="TextEdit" parent="connection_error_screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Connection Failure"
+editable = false
+
+[node name="error_button" type="Button" parent="connection_error_screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -168.5
+offset_top = -48.5
+offset_right = 168.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "OK"
+
+[connection signal="pressed" from="JoinServer" to="." method="_on_join_server_pressed"]
+[connection signal="pressed" from="CreateServer" to="." method="_on_create_server_pressed"]
+[connection signal="pressed" from="next_button" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="connection_error_screen/error_button" to="." method="_on_error_button_pressed"]

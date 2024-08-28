@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ddmtfsf0cj3"]
+
+[ext_resource type="Script" path="res://Scripts/Score_screen.gd" id="1_8jk2u"]
+
+[node name="Score_screen" type="Control" node_paths=PackedStringArray("win_text_node", "play_again_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8jk2u")
+win_text_node = NodePath("win text")
+play_again_button = NodePath("play again button")
+
+[node name="IntroAnimation" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="placeholder title" type="RichTextLabel" parent="IntroAnimation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -68.5
+offset_right = 155.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Win Animation goes here"
+
+[node name="play again button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = 9.0
+offset_right = 56.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again"
+
+[node name="back to hub button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = 74.0
+offset_right = 58.0
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[node name="win text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 135.0
+offset_right = 773.0
+offset_bottom = 278.0
+text = "character ID Won!
+Score: 9999999
+points: 10"
+
+[connection signal="pressed" from="play again button" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="back to hub button" to="." method="_on_back_to_hub_button_pressed"]

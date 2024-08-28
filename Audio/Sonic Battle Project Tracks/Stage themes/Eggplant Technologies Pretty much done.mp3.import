@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn8vq2cta4pjw"
+path="res://.godot/imported/Eggplant Technologies Pretty much done.mp3-c8a5a7f07c331a6f8ec1d98651cc6559.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sonic Battle Project Tracks/Stage themes/Eggplant Technologies Pretty much done.mp3"
+dest_files=["res://.godot/imported/Eggplant Technologies Pretty much done.mp3-c8a5a7f07c331a6f8ec1d98651cc6559.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

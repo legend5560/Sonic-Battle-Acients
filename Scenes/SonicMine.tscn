@@ -1,0 +1,251 @@
+[gd_scene load_steps=18 format=3 uid="uid://wthuqkgsrxvy"]
+
+[ext_resource type="Texture2D" uid="uid://cnvca7d2mepgx" path="res://Sprites/Sonic.png" id="1_raevc"]
+[ext_resource type="Script" path="res://Scripts/SonicMine.gd" id="1_uumn5"]
+[ext_resource type="Texture2D" uid="uid://b4kv34vmtfr1j" path="res://Sprites/Effects.png" id="2_4i3k0"]
+[ext_resource type="PackedScene" uid="uid://cyeq44831s3ux" path="res://Models/SONIC_set/Sonic_set.blend" id="4_jhwxt"]
+[ext_resource type="Texture2D" uid="uid://gh6mf2ttbngg" path="res://Models/SONIC_set/SONIC_set.png" id="5_bg8vm"]
+[ext_resource type="Texture2D" uid="uid://baydkjyu8hdlk" path="res://Models/SONIC_set/SONIC_set_glow.png" id="6_ea4dh"]
+[ext_resource type="Material" uid="uid://58e30ip8afyy" path="res://Materials/shadowMaterial.tres" id="7_22ky2"]
+[ext_resource type="PackedScene" uid="uid://bdif0c3bt2ooe" path="res://Scenes/effects/sparks.tscn" id="8_uik85"]
+
+[sub_resource type="Animation" id="Animation_ssyxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(103, 1520, 14, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_4i3k0")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MineArea3D/MineCollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0835429]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MineArea3D/MineCollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_x1030"]
+resource_name = "explode"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:texture")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_4i3k0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(11, 457, 20, 20), Rect2(39, 452, 31, 30), Rect2(76, 456, 24, 24), Rect2(107, 455, 27, 26), Rect2(138, 453, 30, 28), Rect2(170, 450, 32, 32), Rect2(203, 448, 32, 35), Rect2(236, 451, 32, 32), Rect2(269, 452, 32, 30), Rect2(302, 451, 32, 26), Rect2(335, 451, 31, 25), Rect2(370, 451, 29, 23)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MineArea3D/MineCollisionShape3D:shape:radius")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.18101]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MineArea3D/MineCollisionShape3D:disabled")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_hgn4h"]
+resource_name = "idle"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(103, 1520, 14, 15), Rect2(120, 1520, 14, 15), Rect2(137, 1520, 14, 15), Rect2(154, 1520, 14, 15), Rect2(103, 1520, 14, 15), Rect2(120, 1520, 14, 15), Rect2(137, 1520, 14, 15), Rect2(154, 1520, 14, 15), Rect2(103, 1520, 14, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:texture")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_raevc")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MineArea3D/MineCollisionShape3D:shape:radius")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0835429]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MineArea3D/MineCollisionShape3D:disabled")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_unt0o"]
+_data = {
+"RESET": SubResource("Animation_ssyxw"),
+"explode": SubResource("Animation_x1030"),
+"idle": SubResource("Animation_hgn4h")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6uuuw"]
+radius = 0.0802966
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fdm11"]
+radius = 0.0835429
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ifyqv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("AnimationPlayer:current_animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Area3D/CollisionShape3D:disabled")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6job1"]
+albedo_texture = ExtResource("5_bg8vm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2q5e"]
+albedo_texture = ExtResource("6_ea4dh")
+emission_enabled = true
+emission = Color(0.988235, 1, 0.733333, 1)
+
+[node name="SonicMine" type="CharacterBody3D" node_paths=PackedStringArray("model_node", "sprite_node", "particle_node") groups=["Mine", "PlayerAttack"]]
+collision_layer = 0
+script = ExtResource("1_uumn5")
+model_node = NodePath("Sonic_set")
+sprite_node = NodePath("Sprite3D")
+particle_node = NodePath("sparks")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_unt0o")
+}
+autoplay = "idle"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+texture_filter = 2
+texture = ExtResource("2_4i3k0")
+region_enabled = true
+region_rect = Rect2(103, 1520, 14, 15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6uuuw")
+
+[node name="MineArea3D" type="Area3D" parent="." groups=["PlayerAttack"]]
+collision_mask = 3
+
+[node name="MineCollisionShape3D" type="CollisionShape3D" parent="MineArea3D"]
+shape = SubResource("SphereShape3D_fdm11")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ifyqv")
+
+[node name="Sonic_set" parent="." instance=ExtResource("4_jhwxt")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -0.0684668, 0)
+
+[node name="Plane" parent="Sonic_set" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6job1")
+surface_material_override/1 = SubResource("StandardMaterial3D_c2q5e")
+
+[node name="DropShadow" type="CSGCylinder3D" parent="Sonic_set"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0.134217, 0)
+radius = 0.068
+height = 0.01
+material = ExtResource("7_22ky2")
+
+[node name="sparks" parent="." instance=ExtResource("8_uik85")]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="MineArea3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="Sonic_set"]
+[editable path="sparks"]

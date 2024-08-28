@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccethmywbkawh"]
+
+[ext_resource type="PackedScene" uid="uid://bctnlhi3klink" path="res://Models/traffic_light.blend" id="1_578fi"]
+
+[node name="traffic_lights" type="Node3D"]
+
+[node name="traffic_light" parent="." instance=ExtResource("1_578fi")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

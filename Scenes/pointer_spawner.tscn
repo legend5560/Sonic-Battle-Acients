@@ -1,0 +1,127 @@
+[gd_scene load_steps=13 format=3 uid="uid://de531opgpvhcw"]
+
+[ext_resource type="Script" path="res://Scripts/pointer_spawner.gd" id="1_lb4wj"]
+[ext_resource type="PackedScene" uid="uid://ddci126xkh77i" path="res://Models/pointer.blend" id="2_7canr"]
+[ext_resource type="Material" uid="uid://58e30ip8afyy" path="res://Materials/shadowMaterial.tres" id="3_vgnia"]
+[ext_resource type="PackedScene" uid="uid://k3p37vahfpip" path="res://Scenes/MainCam.tscn" id="4_4fc7j"]
+[ext_resource type="Texture2D" uid="uid://biny0gbp4n5p2" path="res://Textures/target3.png" id="4_e05wn"]
+[ext_resource type="Texture2D" uid="uid://dofyi4jiyto42" path="res://Textures/icon.svg" id="6_jo3v5"]
+[ext_resource type="AudioStream" uid="uid://wof5e4smd42" path="res://Audio/CLOCKTick_Antique Pocket Watch Ticking 01_JSE_CM_Mono.wav" id="7_pd3vj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s15qi"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="Animation" id="Animation_8xr3a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("target_spot/pointer_mesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eq7ff"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("target_spot/pointer_mesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1.10957),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.0944, 0), Vector3(0, 4.18879, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tq3iu"]
+_data = {
+"RESET": SubResource("Animation_8xr3a"),
+"spin": SubResource("Animation_eq7ff")
+}
+
+[sub_resource type="Theme" id="Theme_cty8o"]
+default_font_size = 35
+
+[node name="PointerSpawner" type="CharacterBody3D" node_paths=PackedStringArray("raycaster", "target_spot", "timer_text")]
+script = ExtResource("1_lb4wj")
+raycaster = NodePath("RayCast3D")
+target_spot = NodePath("target_spot")
+timer_text = NodePath("Control/time/time left text")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_s15qi")
+
+[node name="target_spot" type="CSGCylinder3D" parent="."]
+radius = 0.1
+height = 0.01
+material = ExtResource("3_vgnia")
+
+[node name="pointer_mesh" parent="target_spot" instance=ExtResource("2_7canr")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="target_spot/pointer_mesh"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.1, 0)
+axis = 1
+texture = ExtResource("4_e05wn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tq3iu")
+}
+autoplay = "spin"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16791, 0)
+target_position = Vector3(0, -8, 0)
+
+[node name="MainCam" parent="." instance=ExtResource("4_4fc7j")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="time" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -242.0
+offset_right = 230.0
+grow_vertical = 0
+texture = ExtResource("6_jo3v5")
+
+[node name="title" type="RichTextLabel" parent="Control/time"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 184.0
+offset_bottom = 72.0
+theme = SubResource("Theme_cty8o")
+text = "TIME"
+
+[node name="time left text" type="RichTextLabel" parent="Control/time"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 174.0
+offset_right = 210.0
+offset_bottom = 237.0
+theme = SubResource("Theme_cty8o")
+text = "20"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_pd3vj")
+volume_db = 4.0
+autoplay = true

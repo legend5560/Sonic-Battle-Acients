@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcog3d5ojuxx4"]
+
+[ext_resource type="Script" path="res://Scripts/generic_ground_button.gd" id="1_0tiq2"]
+[ext_resource type="PackedScene" uid="uid://310wxt17afja" path="res://Models/ground_button.blend" id="1_7us24"]
+[ext_resource type="Material" uid="uid://bwe42fc1jlc5v" path="res://Materials/buttonOnMaterial.tres" id="2_27hws"]
+[ext_resource type="Material" uid="uid://chtg8v3ig7w43" path="res://Materials/buttonOffMaterial.tres" id="3_asx4k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_56f7t"]
+size = Vector3(0.4, 0.25, 0.4)
+
+[node name="generic_ground_button" type="Node3D" node_paths=PackedStringArray("button_mesh_object")]
+script = ExtResource("1_0tiq2")
+on_material = ExtResource("2_27hws")
+off_material = ExtResource("3_asx4k")
+button_mesh_object = NodePath("ground_button/ground_button")
+
+[node name="ground_button" parent="." instance=ExtResource("1_7us24")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="ground_button" parent="ground_button" index="0"]
+surface_material_override/1 = ExtResource("3_asx4k")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0657642, 0)
+shape = SubResource("BoxShape3D_56f7t")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+
+[editable path="ground_button"]

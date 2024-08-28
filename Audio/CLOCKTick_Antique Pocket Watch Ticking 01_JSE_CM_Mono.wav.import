@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wof5e4smd42"
+path="res://.godot/imported/CLOCKTick_Antique Pocket Watch Ticking 01_JSE_CM_Mono.wav-37e1704d89d81362fa53ddb427f82781.sample"
+
+[deps]
+
+source_file="res://Audio/CLOCKTick_Antique Pocket Watch Ticking 01_JSE_CM_Mono.wav"
+dest_files=["res://.godot/imported/CLOCKTick_Antique Pocket Watch Ticking 01_JSE_CM_Mono.wav-37e1704d89d81362fa53ddb427f82781.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

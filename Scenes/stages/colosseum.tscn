@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpx3nhqf2ywry"]
+
+[ext_resource type="PackedScene" uid="uid://irlpgd8spuet" path="res://Scenes/stages/invisible_walls.tscn" id="2_rgyl8"]
+[ext_resource type="PackedScene" uid="uid://d35cr5vkx4xna" path="res://Models/Colosseum/Colosseum.blend" id="3_akpbv"]
+[ext_resource type="AudioStream" uid="uid://bn8vq2cta4pjw" path="res://Audio/Sonic Battle Project Tracks/Stage themes/Eggplant Technologies Pretty much done.mp3" id="4_ut4lf"]
+
+[node name="Colosseum" type="Node3D"]
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("2_rgyl8")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 0, -0.43347, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ut4lf")
+volume_db = -15.0
+autoplay = true
+
+[node name="Colosseum" parent="." instance=ExtResource("3_akpbv")]
+transform = Transform3D(1.6, 0, 0, 0, 1.2, 0, 0, 0, 1.6, 0, 0, 0)
+
+[editable path="Colosseum"]

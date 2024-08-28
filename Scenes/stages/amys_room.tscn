@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://wxx6u7khm23x"]
+
+[ext_resource type="PackedScene" uid="uid://cf0poq4j72sml" path="res://Models/original maps/amy_s_room.blend" id="1_w46to"]
+[ext_resource type="Texture2D" uid="uid://bs5h7uw8og7e6" path="res://Models/original maps/textures/Amy_s_Room_walls.png" id="2_dpx34"]
+[ext_resource type="PackedScene" uid="uid://irlpgd8spuet" path="res://Scenes/stages/invisible_walls.tscn" id="2_nh2sa"]
+[ext_resource type="Texture2D" uid="uid://d1slvcwvvgc30" path="res://Models/original maps/textures/Amy_s_Room.png" id="2_u8n3k"]
+[ext_resource type="AudioStream" uid="uid://krmd68hriy3q" path="res://Audio/Sonic Battle Project Tracks/Stage themes/Leaf Storm (Right There) Final Mix 2.mp3" id="4_uqlo6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htcdo"]
+shading_mode = 0
+albedo_texture = ExtResource("2_dpx34")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oh7il"]
+shading_mode = 0
+albedo_texture = ExtResource("2_u8n3k")
+texture_filter = 2
+
+[node name="Amys_Room" type="Node3D"]
+
+[node name="amy_s_room" parent="." instance=ExtResource("1_w46to")]
+transform = Transform3D(0.15, 0, 0, 0, 0.2, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="amy_s_room" parent="amy_s_room" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_htcdo")
+surface_material_override/1 = SubResource("StandardMaterial3D_oh7il")
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("2_nh2sa")]
+transform = Transform3D(0.755, 0, 0, 0, 0.751, 0, 0, 0, 0.372, 0, -0.762953, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uqlo6")
+volume_db = -15.0
+autoplay = true
+
+[editable path="amy_s_room"]

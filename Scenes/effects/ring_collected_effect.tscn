@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://7xflu0k3t6my"]
+
+[ext_resource type="Texture2D" uid="uid://bxdeewwn0wgp3" path="res://Textures/shine.png" id="1_e1p04"]
+[ext_resource type="Script" path="res://Scripts/Destroy.gd" id="1_r53il"]
+
+[sub_resource type="Gradient" id="Gradient_yvc5p"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_427fj"]
+gradient = SubResource("Gradient_yvc5p")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_rnl8r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.284375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ode4c"]
+curve = SubResource("Curve_rnl8r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ywqd5"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 0.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_ode4c")
+color_ramp = SubResource("GradientTexture1D_427fj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5aasl"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 0, 1)
+albedo_texture = ExtResource("1_e1p04")
+albedo_texture_msdf = true
+emission_enabled = true
+emission = Color(1, 1, 0.12549, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_m4min"]
+material = SubResource("StandardMaterial3D_5aasl")
+
+[node name="ring_collected_effect" type="Node3D"]
+script = ExtResource("1_r53il")
+time = 0.5
+
+[node name="sparks lead" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.066, 0)
+emitting = false
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_ywqd5")
+draw_pass_1 = SubResource("QuadMesh_m4min")

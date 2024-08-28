@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://r8qucpkf16m"]
+
+[ext_resource type="PackedScene" uid="uid://mggwff68a6q8" path="res://Models/original maps/library.blend" id="1_y5ugd"]
+[ext_resource type="PackedScene" uid="uid://irlpgd8spuet" path="res://Scenes/stages/invisible_walls.tscn" id="2_45erm"]
+[ext_resource type="Texture2D" uid="uid://cj8pcqrucv8dg" path="res://Models/original maps/textures/Library.png" id="2_geopp"]
+[ext_resource type="Texture2D" uid="uid://blwfjdsdtobs2" path="res://Models/original maps/textures/Library_walls.png" id="3_3acym"]
+[ext_resource type="AudioStream" uid="uid://de5fxhsw74vwg" path="res://Audio/Sonic Battle Project Tracks/Stage themes/SBLM - Neon Rainforest Zone.mp3" id="4_oyanm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pmel"]
+shading_mode = 0
+albedo_texture = ExtResource("2_geopp")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kic3v"]
+shading_mode = 0
+albedo_texture = ExtResource("3_3acym")
+texture_filter = 2
+
+[node name="Library" type="Node3D"]
+
+[node name="library" parent="." instance=ExtResource("1_y5ugd")]
+transform = Transform3D(0.19, 0, 0, 0, 0.2, 0, 0, 0, 0.19, 0, 0, 0)
+
+[node name="library" parent="library" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1pmel")
+surface_material_override/1 = SubResource("StandardMaterial3D_kic3v")
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("2_45erm")]
+transform = Transform3D(0.485, 0, 0, 0, 0.485, 0, 0, 0, 0.485, 0, -0.883603, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oyanm")
+volume_db = -15.0
+autoplay = true
+
+[editable path="library"]

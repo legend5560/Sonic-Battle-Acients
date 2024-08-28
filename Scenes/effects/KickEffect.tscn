@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcatofkaytas7"]
+
+[ext_resource type="Script" path="res://Scripts/AttackEffect.gd" id="1_nh2ib"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hpbmf"]
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5drfp"]
+albedo_color = Color(1, 0.839216, 0.145098, 1)
+metallic_specular = 0.85
+emission_enabled = true
+emission = Color(1, 0.352941, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_btajo"]
+material = SubResource("StandardMaterial3D_5drfp")
+
+[node name="PunchEffect" type="Node3D"]
+script = ExtResource("1_nh2ib")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0)
+emitting = false
+amount = 16
+lifetime = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_hpbmf")
+draw_pass_1 = SubResource("SphereMesh_btajo")

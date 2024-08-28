@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bajpvcg47riqs"
+path="res://.godot/imported/It doesn_t matter Champion Mix but it_s actually finished.mp3-94ce507b6e4037a74fc19bc0024ddab5.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sonic Battle Project Tracks/Stage themes/It doesn_t matter Champion Mix but it_s actually finished.mp3"
+dest_files=["res://.godot/imported/It doesn_t matter Champion Mix but it_s actually finished.mp3-94ce507b6e4037a74fc19bc0024ddab5.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.915
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://da210klr6jhu0"
+path="res://.godot/imported/Menu final version maybe.mp3-98faeb51292e33f90a3d3d29a6145451.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sonic Battle Project Tracks/Menus/Menu final version maybe.mp3"
+dest_files=["res://.godot/imported/Menu final version maybe.mp3-98faeb51292e33f90a3d3d29a6145451.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

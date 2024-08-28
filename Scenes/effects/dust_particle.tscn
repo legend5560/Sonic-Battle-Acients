@@ -1,0 +1,132 @@
+[gd_scene load_steps=13 format=3 uid="uid://dicv0pt0bjfrn"]
+
+[ext_resource type="Script" path="res://Scripts/Destroy.gd" id="1_8mqdo"]
+[ext_resource type="PackedScene" uid="uid://0v5s4rfg12ci" path="res://Models/Dash_dust/Dash_dust.blend" id="1_o4hx1"]
+[ext_resource type="Texture2D" uid="uid://b0rhko5uoo742" path="res://Models/Dash_dust/DASH_DUST.png" id="3_m5d4h"]
+
+[sub_resource type="Curve" id="Curve_tnptr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.284375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1do7t"]
+curve = SubResource("Curve_tnptr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m83x2"]
+particle_flag_align_y = true
+spread = 20.0
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_1do7t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxjj6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u6ibq"]
+material = SubResource("StandardMaterial3D_lxjj6")
+top_radius = 0.1
+bottom_radius = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mc8wa"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(1, 1, 1, 0.407843)
+albedo_texture = ExtResource("3_m5d4h")
+
+[sub_resource type="Animation" id="Animation_h7nlu"]
+resource_name = "action"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dash_dust/Dash_Dust:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 0, 0), Vector3(1, 1, 1), Vector3(1, 0, 0), Vector3(1, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sparks lead:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0658621, -0.00426024), Vector3(0, 0.0658621, 0.772329), Vector3(0, 0.0658621, 0.772329)]
+}
+
+[sub_resource type="Animation" id="Animation_xyjq5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dash_dust/Dash_Dust:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sparks lead:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0658621, -0.00426024)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vve4"]
+_data = {
+"RESET": SubResource("Animation_xyjq5"),
+"action": SubResource("Animation_h7nlu")
+}
+
+[node name="DustParticle" type="Node3D"]
+script = ExtResource("1_8mqdo")
+
+[node name="burst" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0.0707107, 0.0707107, 3.09086e-09, -0.0707107, 0.0707107, -3.09086e-09, 0, 0.0658621, -0.00426024)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_m83x2")
+draw_pass_1 = SubResource("CylinderMesh_u6ibq")
+
+[node name="sparks lead" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0.0707107, 0.0707107, 3.09086e-09, -0.0707107, 0.0707107, -3.09086e-09, 0, 0.0658621, -0.00426024)
+emitting = false
+amount = 6
+lifetime = 0.3
+one_shot = true
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_m83x2")
+draw_pass_1 = SubResource("CylinderMesh_u6ibq")
+
+[node name="Dash_dust" parent="." instance=ExtResource("1_o4hx1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Dash_Dust" parent="Dash_dust" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mc8wa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1vve4")
+}
+autoplay = "action"
+
+[editable path="Dash_dust"]

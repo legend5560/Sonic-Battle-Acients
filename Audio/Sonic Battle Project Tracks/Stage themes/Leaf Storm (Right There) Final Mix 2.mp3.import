@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://krmd68hriy3q"
+path="res://.godot/imported/Leaf Storm (Right There) Final Mix 2.mp3-51ac5fc58c93bbb39887194a28b56c65.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sonic Battle Project Tracks/Stage themes/Leaf Storm (Right There) Final Mix 2.mp3"
+dest_files=["res://.godot/imported/Leaf Storm (Right There) Final Mix 2.mp3-51ac5fc58c93bbb39887194a28b56c65.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

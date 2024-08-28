@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1d37k4ogmek2"
+path="res://.godot/imported/Sand Ocean.ogg-2b29cbb54fd11b132ddd504a7d10b3fa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Sand Ocean.ogg"
+dest_files=["res://.godot/imported/Sand Ocean.ogg-2b29cbb54fd11b132ddd504a7d10b3fa.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=8.283
+bpm=0.0
+beat_count=0
+bar_beats=4

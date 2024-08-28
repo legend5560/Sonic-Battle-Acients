@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://irlpgd8spuet"]
+
+[ext_resource type="PackedScene" uid="uid://cdcvbj8s8tfnh" path="res://Models/invisible_walls.blend" id="1_dhld0"]
+
+[node name="InvisibleWalls" type="Node3D"]
+
+[node name="invisible_walls" parent="." instance=ExtResource("1_dhld0")]
+visible = false

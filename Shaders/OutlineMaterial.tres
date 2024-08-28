@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cg0cqcg2nf6yr"]
+
+[ext_resource type="Texture2D" uid="uid://hht8n5ttfdkf" path="res://Models/Sonic/textures/sonic_model_text.png" id="1_1drvc"]
+[ext_resource type="Shader" path="res://Shaders/OutlineShader.gdshader" id="1_tpl1e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12y2q"]
+shading_mode = 0
+albedo_texture = ExtResource("1_1drvc")
+
+[resource]
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_12y2q")
+shader = ExtResource("1_tpl1e")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 1.5

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsjed211uvp1m"]
+
+[ext_resource type="PackedScene" uid="uid://b0tsuprkj53x6" path="res://Models/big_stage.blend" id="1_aijai"]
+[ext_resource type="PackedScene" uid="uid://irlpgd8spuet" path="res://Scenes/stages/invisible_walls.tscn" id="2_t5byd"]
+[ext_resource type="PackedScene" uid="uid://dshayfo2x8pe5" path="res://Scenes/enemies/placeholder_enemy.tscn" id="3_n36h4"]
+
+[node name="BigStage" type="Node3D"]
+
+[node name="big_stage" parent="." instance=ExtResource("1_aijai")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, -2.01624, 0)
+
+[node name="border" parent="big_stage" index="3"]
+visible = false
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("2_t5byd")]
+transform = Transform3D(2.04, 0, 0, 0, 1, 0, 0, 0, 2.035, 0, 0, 0)
+
+[node name="placeholder enemies" type="Marker3D" parent="."]
+
+[node name="PlaceholderEnemy" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17189, -0.752251, 0.51478)
+
+[node name="PlaceholderEnemy2" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08808, -0.744895, 4.66608)
+
+[node name="PlaceholderEnemy3" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44013, -0.74139, -5.17905)
+
+[node name="PlaceholderEnemy4" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33263, -0.760468, -2.32507)
+
+[node name="PlaceholderEnemy5" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82716, -0.795552, 2.12184)
+
+[node name="PlaceholderEnemy6" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.651963, -0.753886, 6.5565)
+
+[node name="PlaceholderEnemy7" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47788, -0.8463, 6.99709)
+
+[node name="PlaceholderEnemy8" parent="placeholder enemies" instance=ExtResource("3_n36h4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49525, -1.4626, 2.3957)
+
+[editable path="big_stage"]

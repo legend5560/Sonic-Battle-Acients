@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvn1yjxoq8fdx"]
+
+[ext_resource type="Script" path="res://Scripts/PauseScript.gd" id="1_qgnnd"]
+
+[node name="Pause" type="Control" node_paths=PackedStringArray("pause_menu", "resume_button", "restart_button", "main_menu_button")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qgnnd")
+pause_menu = NodePath("pause_menu_placeholder")
+resume_button = NodePath("pause_menu_placeholder/Resume Button")
+restart_button = NodePath("pause_menu_placeholder/Restart Button")
+main_menu_button = NodePath("pause_menu_placeholder/go to previous ambient")
+
+[node name="pause_menu_placeholder" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextEdit" type="TextEdit" parent="pause_menu_placeholder"]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 230.0
+offset_right = 753.0
+offset_bottom = 516.0
+text = "				   Paused
+
+  Press \"ESC\" key to resume"
+editable = false
+
+[node name="Resume Button" type="Button" parent="pause_menu_placeholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 544.0
+offset_top = 313.0
+offset_right = 692.0
+offset_bottom = 346.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
+[node name="Restart Button" type="Button" parent="pause_menu_placeholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 545.0
+offset_top = 357.0
+offset_right = 693.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="go to previous ambient" type="Button" parent="pause_menu_placeholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 545.0
+offset_top = 446.0
+offset_right = 693.0
+offset_bottom = 479.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit Ambient"
+
+[node name="options button" type="Button" parent="pause_menu_placeholder"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 545.0
+offset_top = 401.0
+offset_right = 693.0
+offset_bottom = 434.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[connection signal="pressed" from="pause_menu_placeholder/Resume Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="pause_menu_placeholder/Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="pause_menu_placeholder/go to previous ambient" to="." method="_on_go_to_previous_ambient_pressed"]
+[connection signal="pressed" from="pause_menu_placeholder/options button" to="." method="_on_options_button_pressed"]

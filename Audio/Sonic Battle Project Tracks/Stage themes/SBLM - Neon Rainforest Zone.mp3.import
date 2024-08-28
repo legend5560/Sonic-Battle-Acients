@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de5fxhsw74vwg"
+path="res://.godot/imported/SBLM - Neon Rainforest Zone.mp3-540756a3da1d9bb8e8f5675315186e27.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sonic Battle Project Tracks/Stage themes/SBLM - Neon Rainforest Zone.mp3"
+dest_files=["res://.godot/imported/SBLM - Neon Rainforest Zone.mp3-540756a3da1d9bb8e8f5675315186e27.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

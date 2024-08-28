@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ccljchviwd0v4"]
+
+[ext_resource type="Shader" path="res://Shaders/PixelShader.gdshader" id="1_4aags"]
+
+[resource]
+render_priority = -1
+shader = ExtResource("1_4aags")
+shader_parameter/pixel_size = 2

@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2bjjd67ar4p6"]
+
+[ext_resource type="PackedScene" uid="uid://c0mmvytuadg80" path="res://Models/HEAL_RING/Heal_ring.blend" id="1_ln8t3"]
+[ext_resource type="Texture2D" uid="uid://cu2vttibirntx" path="res://Models/HEAL_RING/HEAL_RING.png" id="2_uo3vb"]
+
+[sub_resource type="Curve" id="Curve_luexa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.284375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ode4c"]
+curve = SubResource("Curve_luexa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_80au5"]
+particle_flag_align_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_ode4c")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44pa6"]
+albedo_color = Color(0, 0.74902, 0.768627, 1)
+emission_enabled = true
+emission = Color(0, 0.568627, 0.615686, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aa56l"]
+material = SubResource("StandardMaterial3D_44pa6")
+top_radius = 0.1
+bottom_radius = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yh0ce"]
+albedo_texture = ExtResource("2_uo3vb")
+
+[sub_resource type="Animation" id="Animation_xg10k"]
+resource_name = "spin"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heal_ring/Cylinder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.0944, 0), Vector3(0, 4.18879, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_226nk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Heal_ring/Cylinder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8atb"]
+_data = {
+"RESET": SubResource("Animation_226nk"),
+"spin": SubResource("Animation_xg10k")
+}
+
+[node name="HealingEffect" type="Node3D"]
+
+[node name="sparks lead" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.066, 0)
+lifetime = 0.3
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_80au5")
+draw_pass_1 = SubResource("CylinderMesh_aa56l")
+
+[node name="Heal_ring" parent="." instance=ExtResource("1_ln8t3")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0)
+
+[node name="Cylinder" parent="Heal_ring" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yh0ce")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m8atb")
+}
+autoplay = "spin"
+
+[editable path="Heal_ring"]

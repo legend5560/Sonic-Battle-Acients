@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://xpmbdjllqylg"]
+
+[ext_resource type="PackedScene" uid="uid://cx4044jdmta4d" path="res://Models/original maps/chao_ruin.blend" id="1_lja5g"]
+[ext_resource type="Texture2D" uid="uid://cfenbdjcebs3h" path="res://Models/original maps/textures/Chao_Ruins.png" id="2_e3imh"]
+[ext_resource type="PackedScene" uid="uid://irlpgd8spuet" path="res://Scenes/stages/invisible_walls.tscn" id="2_fcckd"]
+[ext_resource type="Texture2D" uid="uid://cvei8s4iusn7a" path="res://Models/original maps/textures/Chao_Ruins_walls.png" id="3_r4qul"]
+[ext_resource type="AudioStream" uid="uid://bkjl1pc7twqxj" path="res://Audio/Sonic Battle Project Tracks/Situational - Event/Knuckles Theme Finished.mp3" id="4_21y3r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cxbx"]
+shading_mode = 0
+albedo_texture = ExtResource("2_e3imh")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbjj5"]
+shading_mode = 0
+albedo_texture = ExtResource("3_r4qul")
+texture_filter = 2
+
+[node name="Chao_Ruin" type="Node3D"]
+
+[node name="chao_ruin" parent="." instance=ExtResource("1_lja5g")]
+transform = Transform3D(0.15, 0, 0, 0, 0.2, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="chao_ruin" parent="chao_ruin" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_7cxbx")
+surface_material_override/1 = SubResource("StandardMaterial3D_mbjj5")
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("2_fcckd")]
+transform = Transform3D(0.525, 0, 0, 0, 0.75, 0, 0, 0, 0.521, 0, -0.857985, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_21y3r")
+volume_db = -15.0
+autoplay = true
+
+[editable path="chao_ruin"]

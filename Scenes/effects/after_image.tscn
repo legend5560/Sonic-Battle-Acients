@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://kpbph7ab30i6"]
+
+[ext_resource type="Script" path="res://Scripts/after_image.gd" id="1_d3k8h"]
+[ext_resource type="PackedScene" uid="uid://cif8ar07vb2yr" path="res://Models/Sonic/sonicrigged_2.tscn" id="1_nw2p4"]
+[ext_resource type="Material" uid="uid://bpcmq4w2x7h35" path="res://Materials/AfterImageMaterial.tres" id="2_mvkqn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23nmn"]
+transparency = 1
+albedo_color = Color(0.00392157, 0.47451, 0.52549, 0.784314)
+metallic = 0.1
+roughness = 0.22
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcpsc"]
+transparency = 1
+albedo_color = Color(0.00392157, 0.47451, 0.52549, 0.784314)
+metallic = 0.1
+roughness = 0.22
+disable_receive_shadows = true
+
+[node name="AfterImage" type="Node3D" node_paths=PackedStringArray("mesh_node", "animation_node")]
+script = ExtResource("1_d3k8h")
+after_image_material = ExtResource("2_mvkqn")
+mesh_node = NodePath("sonicrigged2/Armature/Skeleton3D/Sonic")
+animation_node = NodePath("sonicrigged2/AnimationPlayer")
+
+[node name="sonicrigged2" parent="." instance=ExtResource("1_nw2p4")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, -0.15, 0)
+script = null
+
+[node name="Sonic" parent="sonicrigged2/Armature/Skeleton3D" index="0"]
+cast_shadow = 0
+surface_material_override/0 = SubResource("StandardMaterial3D_23nmn")
+surface_material_override/1 = SubResource("StandardMaterial3D_hcpsc")
+
+[editable path="sonicrigged2"]

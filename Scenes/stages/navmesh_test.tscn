@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1dv7tjtv0yse"]
+
+[ext_resource type="PackedScene" uid="uid://cqc8qqujbql3v" path="res://Models/navtest.blend" id="1_v0k8a"]
+[ext_resource type="Material" uid="uid://cwm4ljlmv0vbo" path="res://Materials/green Hills/groundMaterial.tres" id="2_07338"]
+[ext_resource type="Material" uid="uid://b4trcgernvwmr" path="res://Materials/green Hills/grassMaterial.tres" id="3_ah47y"]
+[ext_resource type="AudioStream" uid="uid://cbkkp5xho5o0m" path="res://Audio/Sonic Battle Project Tracks/Stage themes/SBLM - Resort Wip 6.mp3" id="4_jlpt7"]
+[ext_resource type="PackedScene" uid="uid://drlu8n40mygqk" path="res://Scenes/spikes.tscn" id="4_sbo7i"]
+
+[node name="Navmesh_Test" type="Node3D"]
+
+[node name="navtest" parent="." instance=ExtResource("1_v0k8a")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.0732, -4.3019)
+
+[node name="obstacles" parent="navtest" index="0"]
+surface_material_override/0 = ExtResource("2_07338")
+surface_material_override/1 = ExtResource("3_ah47y")
+
+[node name="links" type="Marker3D" parent="."]
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.43602, 0, -3.05408)
+start_position = Vector3(-0.44, 0, 0)
+end_position = Vector3(0.28, 0, 0)
+
+[node name="NavigationLink3D9" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90988, 0, -1.69351)
+start_position = Vector3(0.63, 0, 1.26)
+end_position = Vector3(0.415, 0, -1.4)
+
+[node name="NavigationLink3D2" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.33663, 0, -4.48128)
+start_position = Vector3(-0.44, 0, -0.73)
+end_position = Vector3(0.28, 0, 0.935)
+
+[node name="NavigationLink3D3" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.14081, 0, -6.55551)
+start_position = Vector3(0.86, 0, -0.73)
+end_position = Vector3(0.28, 0, 0.935)
+
+[node name="NavigationLink3D4" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36917, 0, -5.75992)
+start_position = Vector3(-0.875, 0, -1.835)
+end_position = Vector3(0.28, 0, 1.365)
+
+[node name="NavigationLink3D5" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08142, 0, -1.75052)
+start_position = Vector3(0.11, 0, -2.195)
+end_position = Vector3(-0.685, 0, 0.935)
+
+[node name="NavigationLink3D6" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38994, 0, -4.37964)
+start_position = Vector3(1.16, 0, -0.005)
+end_position = Vector3(-0.495, 0, 0.19)
+
+[node name="NavigationLink3D7" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.295506, 0, -4.37964)
+start_position = Vector3(0.3, 1.05, -0.005)
+end_position = Vector3(-0.495, 0, 0.19)
+
+[node name="NavigationLink3D8" type="NavigationLink3D" parent="links"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.295506, 0, -4.37964)
+start_position = Vector3(0.3, 1.05, -0.005)
+end_position = Vector3(1.125, 0, 0.19)
+
+[node name="hazards" type="Marker3D" parent="."]
+
+[node name="Spikes" parent="hazards" instance=ExtResource("4_sbo7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03551, -0.0732, -8.26734)
+
+[node name="Spikes2" parent="hazards" instance=ExtResource("4_sbo7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28073, -0.0731995, -6.13114)
+
+[node name="Spikes3" parent="hazards" instance=ExtResource("4_sbo7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.99954, -0.0732, -4.32541)
+
+[node name="Spikes4" parent="hazards" instance=ExtResource("4_sbo7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74347, -0.0732, 0.56647)
+
+[node name="Spikes5" parent="hazards" instance=ExtResource("4_sbo7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0321, -0.0732, 0.222303)
+
+[node name="Spikes6" parent="hazards" instance=ExtResource("4_sbo7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99329, -0.0732, -8.28146)
+
+[node name="Spikes7" parent="hazards" instance=ExtResource("4_sbo7i")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.259124, 0.140757, -6.07048)
+push_player_backwards = false
+new_direction = Vector3(-1, 0, 0)
+
+[node name="AnimationPlayer" parent="hazards/Spikes7" index="0"]
+root_node = NodePath("../../Spikes7")
+
+[node name="CollisionShape3D" parent="hazards/Spikes7/SpikeAreaCollider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129406, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_jlpt7")
+volume_db = -15.0
+autoplay = true
+
+[editable path="navtest"]
+[editable path="hazards/Spikes7"]
+[editable path="hazards/Spikes7/Spikes2"]

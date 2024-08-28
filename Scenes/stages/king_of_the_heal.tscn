@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://vmlbayb17hrh"]
+
+[ext_resource type="PackedScene" uid="uid://eomqhujrumt6" path="res://Models/king_of_the_heal.blend" id="1_lt6ue"]
+[ext_resource type="Material" uid="uid://b06j6finw1qvt" path="res://Materials/waterMaterial.tres" id="2_msbxp"]
+[ext_resource type="PackedScene" uid="uid://irlpgd8spuet" path="res://Scenes/stages/invisible_walls.tscn" id="3_uysxm"]
+
+[node name="KingOfTheHeal" type="Node3D"]
+
+[node name="king_of_the_heal" parent="." instance=ExtResource("1_lt6ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93465, -0.75611, -1.8406)
+
+[node name="healing spot" parent="king_of_the_heal" index="1"]
+surface_material_override/0 = ExtResource("2_msbxp")
+
+[node name="border" parent="king_of_the_heal" index="2"]
+visible = false
+
+[node name="wall" parent="king_of_the_heal" index="4"]
+visible = false
+
+[node name="InvisibleWalls" parent="." instance=ExtResource("3_uysxm")]
+transform = Transform3D(4.11, 0, 0, 0, 2.325, 0, 0, 0, 3.13, -11.1384, -0.75611, 2.73597)
+
+[editable path="king_of_the_heal"]

@@ -1,0 +1,225 @@
+[gd_scene load_steps=22 format=3 uid="uid://ch6b07te7gdtd"]
+
+[ext_resource type="PackedScene" uid="uid://dqlwa7sdqmx42" path="res://Models/KO_RING/ko_ring.blend" id="1_60dis"]
+[ext_resource type="Script" path="res://Scripts/Destroy.gd" id="1_ca5ul"]
+[ext_resource type="Texture2D" uid="uid://bxdeewwn0wgp3" path="res://Textures/shine.png" id="1_jssnc"]
+[ext_resource type="Texture2D" uid="uid://d2a8sjodoi0sr" path="res://Models/KO_RING/KO_RING.png" id="2_vl764"]
+[ext_resource type="PackedScene" uid="uid://yurjo0kl5766" path="res://Models/spark/spark.blend" id="3_0ouem"]
+[ext_resource type="Texture2D" uid="uid://coom3m4wr5p86" path="res://Models/spark/spark.png" id="4_8p1nn"]
+
+[sub_resource type="Gradient" id="Gradient_brf2d"]
+offsets = PackedFloat32Array(0, 0.177305, 0.787234, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sa0iq"]
+gradient = SubResource("Gradient_brf2d")
+
+[sub_resource type="Curve" id="Curve_umyrw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.284375, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tbrne"]
+curve = SubResource("Curve_umyrw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_40bcb"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 0.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 15.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_tbrne")
+color_ramp = SubResource("GradientTexture1D_sa0iq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x78g4"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.94902, 0.447059, 1, 1)
+albedo_texture = ExtResource("1_jssnc")
+albedo_texture_msdf = true
+emission = Color(0.85098, 0.572549, 0.745098, 1)
+disable_receive_shadows = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ydyph"]
+material = SubResource("StandardMaterial3D_x78g4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bcxp"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("2_vl764")
+
+[sub_resource type="Animation" id="Animation_334p5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ko_ring/Cylinder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spark/Sphere:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ltfm4"]
+resource_name = "spin"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ko_ring/Cylinder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.0944, 0), Vector3(0, 4.18879, 0), Vector3(0, 6.28319, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spark/Sphere:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.8, 0.8, 0.8), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4mvgs"]
+_data = {
+"RESET": SubResource("Animation_334p5"),
+"spin": SubResource("Animation_ltfm4")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcjue"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_8p1nn")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Animation" id="Animation_bder0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ko_ring/Cylinder:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spark/Sphere:surface_material_override/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_la0ek"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ko_ring/Cylinder:surface_material_override/0:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("spark/Sphere:surface_material_override/0:albedo_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjwpf"]
+_data = {
+"RESET": SubResource("Animation_bder0"),
+"fade": SubResource("Animation_la0ek")
+}
+
+[node name="KOEffect" type="Node3D"]
+script = ExtResource("1_ca5ul")
+time = 2.0
+
+[node name="sparks lead" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.066, 0)
+lifetime = 0.3
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_40bcb")
+draw_pass_1 = SubResource("QuadMesh_ydyph")
+
+[node name="ko_ring" parent="." instance=ExtResource("1_60dis")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+
+[node name="Cylinder" parent="ko_ring" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0bcxp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4mvgs")
+}
+autoplay = "spin"
+
+[node name="spark" parent="." instance=ExtResource("3_0ouem")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0.152067, 0)
+
+[node name="Sphere" parent="spark" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kcjue")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fjwpf")
+}
+
+[editable path="ko_ring"]
+[editable path="spark"]

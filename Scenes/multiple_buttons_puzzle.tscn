@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dku563d67ba7"]
+
+[ext_resource type="Script" path="res://Scripts/multiple_buttons_puzzle.gd" id="1_fgdy4"]
+
+[node name="multiple_buttons_puzzle" type="Node3D" node_paths=PackedStringArray("buttons")]
+script = ExtResource("1_fgdy4")
+buttons = [null, null, null, null]

@@ -1,0 +1,218 @@
+[gd_scene load_steps=9 format=3 uid="uid://bducx2hg2ns61"]
+
+[ext_resource type="Script" path="res://Scripts/ability_select.gd" id="1_l53vm"]
+[ext_resource type="Texture2D" uid="uid://dofyi4jiyto42" path="res://Textures/icon.svg" id="1_rfaqb"]
+[ext_resource type="Texture2D" uid="uid://n6kdb4e0fwly" path="res://Textures/target0.png" id="2_bpi0p"]
+[ext_resource type="AudioStream" uid="uid://wof5e4smd42" path="res://Audio/CLOCKTick_Antique Pocket Watch Ticking 01_JSE_CM_Mono.wav" id="4_qfc7x"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_t60f8"]
+
+[sub_resource type="Theme" id="Theme_82mwl"]
+default_font_size = 35
+
+[sub_resource type="FontFile" id="FontFile_bm8ry"]
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/25/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Theme" id="Theme_1swdb"]
+default_font = SubResource("FontFile_bm8ry")
+default_font_size = 25
+
+[node name="AbilitySelect" type="Control" node_paths=PackedStringArray("menu_title", "shot_symbol", "pow_symbol", "set_symbol", "selector", "avatar", "time_left_text", "shot_slot", "pow_slot", "set_slot")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l53vm")
+menu_title = NodePath("TextureRect/menu title")
+shot_symbol = NodePath("TextureRect/shot")
+pow_symbol = NodePath("TextureRect/pow")
+set_symbol = NodePath("TextureRect/set")
+selector = NodePath("TextureRect/selector")
+avatar = NodePath("TextureRect/avatar")
+time_left_text = NodePath("TextureRect/time/time left text")
+shot_slot = NodePath("TextureRect/shot/slot")
+pow_slot = NodePath("TextureRect/pow/slot")
+set_slot = NodePath("TextureRect/set/slot")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -528.0
+offset_top = -161.0
+offset_right = 516.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_t60f8")
+
+[node name="menu title" type="RichTextLabel" parent="TextureRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 504.0
+offset_bottom = 77.0
+theme = SubResource("Theme_82mwl")
+theme_override_colors/default_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+text = "GROUND ATTACK"
+
+[node name="selector" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 47.0
+offset_right = 223.0
+offset_bottom = 271.0
+texture = ExtResource("2_bpi0p")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="shot" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 106.51
+offset_top = 68.5
+offset_right = 234.51
+offset_bottom = 196.5
+rotation = 0.785398
+texture = ExtResource("1_rfaqb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/shot"]
+layout_mode = 0
+offset_left = -7.0779
+offset_top = 41.7261
+offset_right = 76.9221
+offset_bottom = 92.7261
+rotation = -0.785398
+theme = SubResource("Theme_1swdb")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+text = "SHOT"
+
+[node name="slot" type="RichTextLabel" parent="TextureRect/shot"]
+layout_mode = 0
+offset_left = 72.118
+offset_top = 177.491
+offset_right = 232.118
+offset_bottom = 241.491
+rotation = -0.785398
+theme = SubResource("Theme_82mwl")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Ground"
+
+[node name="pow" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 330.01
+offset_top = 68.0
+offset_right = 458.01
+offset_bottom = 196.0
+rotation = 0.785398
+texture = ExtResource("1_rfaqb")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect/pow"]
+layout_mode = 0
+offset_left = -1.06749
+offset_top = 36.4228
+offset_right = 82.9325
+offset_bottom = 87.4228
+rotation = -0.785398
+theme = SubResource("Theme_1swdb")
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+text = "POW"
+
+[node name="slot" type="RichTextLabel" parent="TextureRect/pow"]
+layout_mode = 0
+offset_left = 72.8252
+offset_top = 177.491
+offset_right = 232.825
+offset_bottom = 241.491
+rotation = -0.785398
+theme = SubResource("Theme_82mwl")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Ground"
+
+[node name="set" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 538.01
+offset_top = 68.0
+offset_right = 666.01
+offset_bottom = 196.0
+rotation = 0.785398
+texture = ExtResource("1_rfaqb")
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="TextureRect/set"]
+layout_mode = 0
+offset_left = 4.58936
+offset_top = 30.766
+offset_right = 88.5894
+offset_bottom = 81.766
+rotation = -0.785398
+theme = SubResource("Theme_1swdb")
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+text = "SET"
+
+[node name="slot" type="RichTextLabel" parent="TextureRect/set"]
+layout_mode = 0
+offset_left = 72.8251
+offset_top = 177.491
+offset_right = 232.825
+offset_bottom = 241.491
+rotation = -0.785398
+theme = SubResource("Theme_82mwl")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Ground"
+
+[node name="avatar" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 45.0
+offset_right = 840.0
+offset_bottom = 293.0
+texture = ExtResource("1_rfaqb")
+
+[node name="time" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 848.0
+offset_top = 45.0
+offset_right = 1024.0
+offset_bottom = 293.0
+texture = ExtResource("1_rfaqb")
+
+[node name="title" type="RichTextLabel" parent="TextureRect/time"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 184.0
+offset_bottom = 72.0
+theme = SubResource("Theme_82mwl")
+text = "TIME"
+
+[node name="time left text" type="RichTextLabel" parent="TextureRect/time"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 192.0
+offset_right = 210.0
+offset_bottom = 264.0
+theme = SubResource("Theme_82mwl")
+text = "20"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qfc7x")
+volume_db = 4.0
+autoplay = true

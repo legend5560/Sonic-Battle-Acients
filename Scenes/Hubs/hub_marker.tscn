@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxf4g5x00seov"]
+
+[ext_resource type="Script" path="res://Scripts/place_marker.gd" id="1_yyafq"]
+[ext_resource type="PackedScene" uid="uid://ddxbjdh025x2k" path="res://Models/prism.blend" id="2_l68n1"]
+[ext_resource type="Material" uid="uid://cijkhftw4emig" path="res://Materials/hubMarkerMaterial.tres" id="3_umaaq"]
+[ext_resource type="Material" uid="uid://58e30ip8afyy" path="res://Materials/shadowMaterial.tres" id="4_mtv6u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qke5g"]
+
+[sub_resource type="Animation" id="Animation_0is1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("prism2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v3t1w"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("prism2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 2.0944, 0), Vector3(0, 4.18879, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_46xbb"]
+_data = {
+"RESET": SubResource("Animation_0is1g"),
+"spin": SubResource("Animation_v3t1w")
+}
+
+[node name="hub_marker" type="Node3D" node_paths=PackedStringArray("label")]
+script = ExtResource("1_yyafq")
+label = NodePath("Label3D")
+place_type = 1
+
+[node name="prism2" parent="." instance=ExtResource("2_l68n1")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="prism" parent="prism2" index="0"]
+surface_material_override/0 = ExtResource("3_umaaq")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_qke5g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_46xbb")
+}
+autoplay = "spin"
+
+[node name="shadow" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0118467, 0)
+radius = 0.1
+height = 0.01
+material = ExtResource("4_mtv6u")
+
+[node name="Label3D" type="Label3D" parent="."]
+offset = Vector2(0, 250)
+text = "Hub"
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+
+[editable path="prism2"]

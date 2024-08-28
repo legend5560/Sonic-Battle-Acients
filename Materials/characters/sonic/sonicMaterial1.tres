@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://df7014i2562bq"]
+
+[ext_resource type="Texture2D" uid="uid://hht8n5ttfdkf" path="res://Models/Sonic/textures/sonic_model_text.png" id="1_gclmj"]
+
+[resource]
+render_priority = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_gclmj")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn6soenbfit7t"]
+
+[ext_resource type="PackedScene" uid="uid://cweyck5bhkb04" path="res://Models/shadow_test_level.blend" id="1_37onf"]
+[ext_resource type="PackedScene" uid="uid://dshayfo2x8pe5" path="res://Scenes/enemies/placeholder_enemy.tscn" id="2_ggy6l"]
+
+[node name="test_stage_v1" type="Node3D"]
+
+[node name="test_stage_v1" parent="." instance=ExtResource("1_37onf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.357858, 0)
+
+[node name="invisible_walls" parent="test_stage_v1" index="1"]
+visible = false
+
+[node name="enemies" type="Marker3D" parent="."]
+
+[node name="PlaceholderEnemy" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.03447, -0.357858, 4.31789)
+
+[node name="PlaceholderEnemy2" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25204, -0.357858, 2.37706)
+
+[node name="PlaceholderEnemy3" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2291, -0.357858, -2.09161)
+
+[node name="PlaceholderEnemy4" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.68558, -0.357858, 6.71046)
+
+[node name="PlaceholderEnemy5" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.413934, -0.357859, -4.39799)
+
+[node name="PlaceholderEnemy6" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05085, -0.357857, -1.53676)
+
+[node name="PlaceholderEnemy7" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.54772, -0.357858, -2.19054)
+
+[node name="PlaceholderEnemy8" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5554, -0.357858, -1.20421)
+
+[node name="PlaceholderEnemy9" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11206, -0.357858, -2.20879)
+
+[node name="PlaceholderEnemy10" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.19525, -0.357858, -1.69536)
+
+[node name="PlaceholderEnemy11" parent="enemies" instance=ExtResource("2_ggy6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.87932, -0.357857, -0.824441)
+
+[editable path="test_stage_v1"]

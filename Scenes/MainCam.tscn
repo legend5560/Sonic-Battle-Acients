@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://k3p37vahfpip"]
+
+[ext_resource type="Script" path="res://Scripts/MainCam.gd" id="1_2ikkk"]
+[ext_resource type="Material" uid="uid://6diw6is8k6t0" path="res://Shaders/PixelTestMaterial.tres" id="2_u5h7u"]
+
+[sub_resource type="Environment" id="Environment_2g3hd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_44ec5"]
+material = ExtResource("2_u5h7u")
+size = Vector2(10, 10)
+
+[node name="MainCam" type="Camera3D" node_paths=PackedStringArray("light_node", "raycast_to_player")]
+environment = SubResource("Environment_2g3hd")
+current = true
+fov = 10.0
+size = 3.0
+script = ExtResource("1_2ikkk")
+light_node = NodePath("DirectionalLight3D")
+raycast_to_player = NodePath("RayCast3D")
+
+[node name="LookingAt" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.984738, -0.10935, -0.135402, 0.172728, 0.709496, 0.683213, 0.0213583, -0.696174, 0.717555, 0, 1.25018, 3.33821)
+light_color = Color(1, 1, 0.72549, 1)
+light_energy = 3.0
+light_angular_distance = 15.0
+shadow_enabled = true
+shadow_normal_bias = 10.0
+shadow_blur = 0.0
+directional_shadow_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.551662)
+cast_shadow = 2
+mesh = SubResource("QuadMesh_44ec5")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -100, 0)
+collision_mask = 3
+debug_shape_thickness = 5

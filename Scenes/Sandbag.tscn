@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc0h3y8ciho6e"]
+
+[ext_resource type="Script" path="res://Scripts/Sandbag.gd" id="1_5ac2i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jg5ah"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t286n"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwkfc"]
+size = Vector3(1, 2, 1)
+
+[node name="Sandbag" type="CharacterBody3D" groups=["CanHurt"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+collision_layer = 2
+script = ExtResource("1_5ac2i")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(1, 2, 1)
+material = SubResource("StandardMaterial3D_jg5ah")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.183004, 0.50417, 0.360081)
+size = Vector3(0.251628, 0.458735, 0.429749)
+material = SubResource("StandardMaterial3D_t286n")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.183, 0.504, 0.36)
+size = Vector3(0.251628, 0.458735, 0.429749)
+material = SubResource("StandardMaterial3D_t286n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_lwkfc")

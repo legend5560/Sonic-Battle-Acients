@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bkjl1pc7twqxj"
+path="res://.godot/imported/Knuckles Theme Finished.mp3-e4bc4ae9c9a22d2fc1f1a0fd3fa05142.mp3str"
+
+[deps]
+
+source_file="res://Audio/Sonic Battle Project Tracks/Situational - Event/Knuckles Theme Finished.mp3"
+dest_files=["res://.godot/imported/Knuckles Theme Finished.mp3-e4bc4ae9c9a22d2fc1f1a0fd3fa05142.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

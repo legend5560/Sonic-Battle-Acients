@@ -1,0 +1,179 @@
+[gd_scene load_steps=15 format=3 uid="uid://cgbvgkrq44jh3"]
+
+[ext_resource type="Script" path="res://Scripts/SonicWave.gd" id="1_dmdae"]
+[ext_resource type="Texture2D" uid="uid://cnvca7d2mepgx" path="res://Sprites/Sonic.png" id="1_too07"]
+[ext_resource type="PackedScene" uid="uid://dtyd0n7b32dse" path="res://Models/Sonic_wave/Sonic_wave.blend" id="3_oa71t"]
+[ext_resource type="Texture2D" uid="uid://bnibtmb3va6rr" path="res://Models/Sonic_wave/SONIC_WAVE.png" id="4_8iq7n"]
+
+[sub_resource type="Animation" id="Animation_plqpf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(60, 2097, 27, 28)]
+}
+
+[sub_resource type="Animation" id="Animation_bdcqx"]
+resource_name = "move"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(60, 2097, 27, 28), Rect2(97, 2067, 42, 58), Rect2(150, 2071, 50, 54), Rect2(210, 2077, 55, 48), Rect2(277, 2079, 60, 46), Rect2(346, 2068, 61, 57), Rect2(416, 2074, 60, 51), Rect2(486, 2072, 61, 53), Rect2(561, 2069, 60, 56), Rect2(630, 2068, 61, 58), Rect2(701, 2065, 60, 62), Rect2(772, 2089, 60, 38), Rect2(843, 2097, 61, 27), Rect2(915, 2103, 61, 21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1265"]
+_data = {
+"RESET": SubResource("Animation_plqpf"),
+"move": SubResource("Animation_bdcqx")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iys2q"]
+size = Vector3(0.343412, 0.271608, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p5yhl"]
+size = Vector3(0.349656, 0.490143, 0.449671)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6nc6x"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite3D:flip_h")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("AnimationPlayer:current_animation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:motion_mode")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyefr"]
+shading_mode = 0
+albedo_texture = ExtResource("4_8iq7n")
+
+[sub_resource type="Animation" id="Animation_kp50f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic_wave/back:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sonic_wave/back:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p76up"]
+resource_name = "action"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sonic_wave/back:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 2.0944), Vector3(0, 0, 4.18879), Vector3(0, 0, 6.28319)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sonic_wave/back:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_21l2v"]
+_data = {
+"RESET": SubResource("Animation_kp50f"),
+"action": SubResource("Animation_p76up")
+}
+
+[node name="SonicWave" type="CharacterBody3D" groups=["PlayerAttack"]]
+collision_layer = 0
+script = ExtResource("1_dmdae")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r1265")
+}
+autoplay = "move"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+texture_filter = 2
+texture = ExtResource("1_too07")
+region_enabled = true
+region_rect = Rect2(60, 2097, 27, 28)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_iys2q")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0374632, 0)
+shape = SubResource("BoxShape3D_p5yhl")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6nc6x")
+
+[node name="Sonic_wave" parent="." instance=ExtResource("3_oa71t")]
+transform = Transform3D(0.045, 0, 0, 0, 0.045, 0, 0, 0, 0.045, 0, 0, 0.443124)
+
+[node name="back" parent="Sonic_wave" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yyefr")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_21l2v")
+}
+autoplay = "action"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0.75)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+
+[editable path="Sonic_wave"]

@@ -1,0 +1,853 @@
+[gd_scene load_steps=7 format=3 uid="uid://dasd2d602fnvh"]
+
+[ext_resource type="Script" path="res://Scripts/Menus.gd" id="1_v57px"]
+[ext_resource type="Texture2D" uid="uid://dofyi4jiyto42" path="res://Textures/icon.svg" id="2_xj80o"]
+[ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="3_btg1a"]
+[ext_resource type="AudioStream" uid="uid://da210klr6jhu0" path="res://Audio/Sonic Battle Project Tracks/Menus/Menu final version maybe.mp3" id="4_8atxw"]
+[ext_resource type="PackedScene" uid="uid://cylkg8du18u87" path="res://Scenes/network_menu.tscn" id="4_jntal"]
+[ext_resource type="PackedScene" uid="uid://bvn1yjxoq8fdx" path="res://Scenes/pause.tscn" id="4_ns075"]
+
+[node name="Menus" type="Control" node_paths=PackedStringArray("intro_animation", "main_menu", "options_menu", "online_or_offline_menu", "online_menu", "mode_selection_menu", "conditions_menu", "character_selection_menu", "area_selection_menu", "pause_menu", "bots_amount_node", "wins_amount_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v57px")
+intro_animation = NodePath("IntroAnimation")
+main_menu = NodePath("MainMenu")
+options_menu = NodePath("OptionsMenu")
+online_or_offline_menu = NodePath("OnlineOrOffline")
+online_menu = NodePath("Network Menu")
+mode_selection_menu = NodePath("ModeSelection")
+conditions_menu = NodePath("ConditionSelection")
+character_selection_menu = NodePath("CharacterSelection")
+area_selection_menu = NodePath("AreaSelect")
+pause_menu = NodePath("Pause")
+bots_amount_node = NodePath("ConditionSelection/bots_amount")
+wins_amount_node = NodePath("ConditionSelection/wins_amount")
+
+[node name="IntroAnimation" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="placeholder title" type="RichTextLabel" parent="IntroAnimation"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -68.5
+offset_right = 155.5
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Intro Animation goes here
+
+press any key to skip"
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="titlle" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -137.0
+offset_top = 64.0
+offset_right = 185.0
+offset_bottom = 174.0
+grow_horizontal = 2
+text = "SONIC BATTLE UNLIMITED EDITION
+
+MAIN MENU"
+
+[node name="static background" type="TextureRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -65.0
+offset_right = 67.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xj80o")
+
+[node name="dynamic background" type="TextureRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -65.0
+offset_right = 67.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xj80o")
+
+[node name="start button" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 81.0
+offset_right = 102.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
+[node name="options button" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 132.0
+offset_right = 102.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Options"
+
+[node name="quit button" type="Button" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 183.0
+offset_right = 102.0
+offset_bottom = 227.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[node name="OptionsMenu" type="Control" parent="." node_paths=PackedStringArray("up_button", "left_button", "down_button", "right_button", "punch_button", "special_button", "jump_button", "guard_button", "upper_button", "flip_camera_button")]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_btg1a")
+up_button = NodePath("TabContainer/Input Map/directionals/up/upButton")
+left_button = NodePath("TabContainer/Input Map/directionals/left/leftButton")
+down_button = NodePath("TabContainer/Input Map/directionals/down/downButton")
+right_button = NodePath("TabContainer/Input Map/directionals/right/rightButton")
+punch_button = NodePath("TabContainer/Input Map/Attacks/punch/punchButton")
+special_button = NodePath("TabContainer/Input Map/Attacks/special/specialButton")
+jump_button = NodePath("TabContainer/Input Map/Other/jump/jumpButton")
+guard_button = NodePath("TabContainer/Input Map/Other/guard/guardButton")
+upper_button = NodePath("TabContainer/Input Map/Other/upper/upperButton")
+flip_camera_button = NodePath("TabContainer/Input Map/Other/flip camera/flipCameraButton")
+
+[node name="title" type="RichTextLabel" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 24.0
+offset_right = 126.0
+offset_bottom = 125.0
+grow_horizontal = 2
+text = "OPTIONS"
+
+[node name="TabContainer" type="TabContainer" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 62.0
+offset_bottom = -92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Difficulty" type="TabBar" parent="OptionsMenu/TabContainer"]
+layout_mode = 2
+
+[node name="Difficulty_Selection_List" type="ItemList" parent="OptionsMenu/TabContainer/Difficulty"]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 45.0
+offset_right = 627.0
+offset_bottom = 170.0
+allow_rmb_select = true
+item_count = 3
+item_0/text = "EASY"
+item_1/text = "NORMAL"
+item_2/text = "HARD"
+
+[node name="Input Map" type="TabBar" parent="OptionsMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="description" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map"]
+layout_mode = 1
+offset_left = 256.0
+offset_top = 50.0
+offset_right = 937.0
+offset_bottom = 83.0
+text = "Click the input you want to change,  then press a  button to set it as the new input"
+
+[node name="directionals" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 98.0
+offset_right = 290.0
+offset_bottom = 290.0
+text = "DIRECTIONALS"
+
+[node name="up" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/directionals"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 30.0
+offset_right = 252.0
+offset_bottom = 65.0
+text = "up"
+
+[node name="upButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/directionals/up"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "W"
+
+[node name="left" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/directionals"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 70.0
+offset_right = 252.0
+offset_bottom = 105.0
+text = "left"
+
+[node name="leftButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/directionals/left"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "A"
+
+[node name="down" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/directionals"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 252.0
+offset_bottom = 145.0
+text = "down"
+
+[node name="downButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/directionals/down"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "S"
+
+[node name="right" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/directionals"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 150.0
+offset_right = 252.0
+offset_bottom = 185.0
+text = "right"
+
+[node name="rightButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/directionals/right"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "D"
+
+[node name="Attacks" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 98.0
+offset_right = 718.0
+offset_bottom = 290.0
+text = "Attacks"
+
+[node name="punch" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/Attacks"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 30.0
+offset_right = 252.0
+offset_bottom = 65.0
+text = "punch"
+
+[node name="punchButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/Attacks/punch"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "ENTER"
+
+[node name="special" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/Attacks"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 70.0
+offset_right = 252.0
+offset_bottom = 105.0
+text = "special"
+
+[node name="specialButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/Attacks/special"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "SHIFT"
+
+[node name="Other" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map"]
+layout_mode = 0
+offset_left = 844.0
+offset_top = 98.0
+offset_right = 1118.0
+offset_bottom = 290.0
+text = "Other"
+
+[node name="jump" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/Other"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 30.0
+offset_right = 252.0
+offset_bottom = 65.0
+text = "jump"
+
+[node name="jumpButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/Other/jump"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "SPACE"
+
+[node name="guard" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/Other"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 70.0
+offset_right = 252.0
+offset_bottom = 105.0
+text = "guard"
+
+[node name="guardButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/Other/guard"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "CTRL"
+
+[node name="upper" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/Other"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 110.0
+offset_right = 252.0
+offset_bottom = 145.0
+text = "upper"
+
+[node name="upperButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/Other/upper"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "E"
+
+[node name="flip camera" type="RichTextLabel" parent="OptionsMenu/TabContainer/Input Map/Other"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 150.0
+offset_right = 252.0
+offset_bottom = 185.0
+text = "flip cam"
+
+[node name="flipCameraButton" type="Button" parent="OptionsMenu/TabContainer/Input Map/Other/flip camera"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = -1.0
+offset_right = 235.0
+offset_bottom = 30.0
+text = "TAB"
+
+[node name="restoreDefaultButton" type="Button" parent="OptionsMenu/TabContainer/Input Map"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 386.0
+offset_right = 1088.0
+offset_bottom = 436.0
+text = "Restore Default"
+
+[node name="Audio" type="TabBar" parent="OptionsMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Screen" type="TabBar" parent="OptionsMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Other" type="TabBar" parent="OptionsMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ShakeCameraCheckBox" type="CheckBox" parent="OptionsMenu/TabContainer/Other"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 98.0
+offset_right = 128.0
+offset_bottom = 122.0
+button_pressed = true
+text = "Shake Camera"
+
+[node name="options back button" type="Button" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.0
+offset_top = 245.0
+offset_right = 94.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="CharacterSelection" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CharacterSelection"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = 64.0
+offset_right = 123.0
+offset_bottom = 155.0
+grow_horizontal = 2
+text = "Character Selection"
+
+[node name="sonic character button" type="Button" parent="CharacterSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -29.0
+offset_right = 1.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sonic"
+
+[node name="shadow character button" type="Button" parent="CharacterSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -29.0
+offset_right = 113.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Shadow"
+
+[node name="back button" type="Button" parent="CharacterSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 128.0
+offset_right = 95.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="OnlineOrOffline" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OnlineOrOffline"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 83.0
+offset_right = 137.0
+offset_bottom = 146.0
+grow_horizontal = 2
+text = "CONNECTION"
+
+[node name="online button" type="Button" parent="OnlineOrOffline"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -25.0
+offset_right = 92.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Online"
+
+[node name="offline button" type="Button" parent="OnlineOrOffline"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 37.0
+offset_right = 94.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Offline"
+
+[node name="back button" type="Button" parent="OnlineOrOffline"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 128.0
+offset_right = 95.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="Network Menu" parent="." node_paths=PackedStringArray("next_button") instance=ExtResource("4_jntal")]
+visible = false
+layout_mode = 1
+next_button = NodePath("next_button")
+
+[node name="JoinServer" parent="Network Menu" index="1"]
+offset_left = 112.0
+offset_top = 112.0
+offset_right = 382.0
+offset_bottom = 190.0
+
+[node name="CreateServer" parent="Network Menu" index="2"]
+offset_left = 112.0
+offset_top = 224.0
+offset_right = 382.0
+offset_bottom = 302.0
+
+[node name="ModeSelection" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="RichTextLabel" parent="ModeSelection"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.0
+offset_top = 55.0
+offset_right = 126.0
+offset_bottom = 125.0
+grow_horizontal = 2
+text = "MODE SELECTION"
+
+[node name="story mode button" type="Button" parent="ModeSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = -25.0
+offset_right = -92.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+text = "Story
+Mode"
+
+[node name="battle mode button" type="Button" parent="ModeSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -25.0
+offset_right = 72.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Battle
+Mode"
+
+[node name="challenge mode button" type="Button" parent="ModeSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 92.0
+offset_top = -25.0
+offset_right = 236.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Challenge
+Mode"
+
+[node name="back button" type="Button" parent="ModeSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 128.0
+offset_right = 95.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="ConditionSelection" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="conditions_next_button" type="Button" parent="ConditionSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 4.0
+offset_right = 90.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next"
+
+[node name="back button" type="Button" parent="ConditionSelection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -82.0
+offset_top = 129.0
+offset_right = 96.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="bots_text" type="RichTextLabel" parent="ConditionSelection"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 152.0
+offset_right = 552.0
+offset_bottom = 192.0
+text = "Number of Bots: "
+
+[node name="bots_amount" type="TextEdit" parent="ConditionSelection"]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 144.0
+offset_right = 648.0
+offset_bottom = 192.0
+text = "3"
+placeholder_text = "1"
+
+[node name="win_points_amount" type="RichTextLabel" parent="ConditionSelection"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 240.0
+offset_right = 552.0
+offset_bottom = 280.0
+text = "Points to Win:"
+
+[node name="wins_amount" type="TextEdit" parent="ConditionSelection"]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 232.0
+offset_right = 648.0
+offset_bottom = 280.0
+text = "2"
+placeholder_text = "2"
+
+[node name="AreaSelect" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="RichTextLabel" parent="AreaSelect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = 38.0
+offset_right = 184.0
+offset_bottom = 157.0
+grow_horizontal = 2
+text = "Area Selection"
+
+[node name="area 1 button" type="Button" parent="AreaSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -84.0
+offset_right = 128.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Area 1 "
+
+[node name="back button" type="Button" parent="AreaSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 128.0
+offset_right = 95.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back"
+
+[node name="Pause" parent="." instance=ExtResource("4_ns075")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8atxw")
+volume_db = -15.0
+autoplay = true
+
+[connection signal="pressed" from="MainMenu/start button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/options button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/quit button" to="." method="_on_quit_button_pressed"]
+[connection signal="item_selected" from="OptionsMenu/TabContainer/Difficulty/Difficulty_Selection_List" to="." method="_on_difficulty_selection_list_item_selected"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/directionals/up/upButton" to="OptionsMenu" method="_on_up_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/directionals/left/leftButton" to="OptionsMenu" method="_on_left_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/directionals/down/downButton" to="OptionsMenu" method="_on_down_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/directionals/right/rightButton" to="OptionsMenu" method="_on_right_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/Attacks/punch/punchButton" to="OptionsMenu" method="_on_punch_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/Attacks/special/specialButton" to="OptionsMenu" method="_on_special_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/Other/jump/jumpButton" to="OptionsMenu" method="_on_jump_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/Other/guard/guardButton" to="OptionsMenu" method="_on_guard_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/Other/upper/upperButton" to="OptionsMenu" method="_on_upper_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/Other/flip camera/flipCameraButton" to="OptionsMenu" method="_on_flip_camera_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Input Map/restoreDefaultButton" to="OptionsMenu" method="_on_restore_default_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/TabContainer/Other/ShakeCameraCheckBox" to="OptionsMenu" method="_on_shake_camera_check_box_pressed"]
+[connection signal="pressed" from="OptionsMenu/options back button" to="." method="_on_options_back_button_pressed"]
+[connection signal="pressed" from="CharacterSelection/sonic character button" to="." method="_on_sonic_character_button_pressed"]
+[connection signal="pressed" from="CharacterSelection/shadow character button" to="." method="_on_shadow_character_button_pressed"]
+[connection signal="pressed" from="CharacterSelection/back button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="OnlineOrOffline/online button" to="." method="_on_online_button_pressed"]
+[connection signal="pressed" from="OnlineOrOffline/offline button" to="." method="_on_offline_button_pressed"]
+[connection signal="pressed" from="OnlineOrOffline/back button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Network Menu/back_button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ModeSelection/story mode button" to="." method="_on_story_mode_button_pressed"]
+[connection signal="pressed" from="ModeSelection/battle mode button" to="." method="_on_battle_mode_button_pressed"]
+[connection signal="pressed" from="ModeSelection/challenge mode button" to="." method="_on_challenge_mode_button_pressed"]
+[connection signal="pressed" from="ModeSelection/back button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="ConditionSelection/conditions_next_button" to="." method="_on_conditions_next_button_pressed"]
+[connection signal="pressed" from="ConditionSelection/back button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="AreaSelect/area 1 button" to="." method="_on_area_1_button_pressed"]
+[connection signal="pressed" from="AreaSelect/back button" to="." method="_on_back_button_pressed"]
+
+[editable path="Network Menu"]
+[editable path="Pause"]

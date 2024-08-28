@@ -1,0 +1,248 @@
+[gd_scene load_steps=14 format=3 uid="uid://kiqyfxt7rwap"]
+
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="1_i2t3l"]
+[ext_resource type="Texture2D" uid="uid://dofyi4jiyto42" path="res://Textures/icon.svg" id="2_kygp5"]
+[ext_resource type="Theme" uid="uid://54y46a4tvnmp" path="res://Text Themes/HUD_special.tres" id="2_maiyj"]
+[ext_resource type="Theme" uid="uid://cgbqhln08lgao" path="res://Text Themes/HUD_v2.tres" id="3_sxpx6"]
+[ext_resource type="Texture2D" uid="uid://cnvca7d2mepgx" path="res://Sprites/Sonic.png" id="5_j0w7h"]
+[ext_resource type="Texture2D" uid="uid://d2p48vq8nkoy7" path="res://Textures/hub_hud_v2.png" id="6_0fpv5"]
+[ext_resource type="Texture2D" uid="uid://ds2tjgv2afeih" path="res://Textures/newHud.webp" id="6_murx8"]
+[ext_resource type="Texture2D" uid="uid://s3ox0cx5md2h" path="res://Textures/hub_hud_v2.webp" id="7_hoyex"]
+
+[sub_resource type="Theme" id="Theme_as4id"]
+
+[sub_resource type="Theme" id="Theme_58wkt"]
+
+[sub_resource type="Animation" id="Animation_7jinx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("new_hud:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 111.5, 64)]
+}
+
+[sub_resource type="Animation" id="Animation_gw2a6"]
+resource_name = "hud_ring_spin"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("new_hud:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 0,
+"values": [Rect2(-0.035, 0.5, 110, 63), Rect2(112, 0.5, 110, 63), Rect2(224, 0.5, 110, 63), Rect2(336, 0.5, 110, 63), Rect2(0, 0.5, 110, 63)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4b8n6"]
+_data = {
+"RESET": SubResource("Animation_7jinx"),
+"hud_ring_spin": SubResource("Animation_gw2a6")
+}
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("battle_hud_node", "life_ui", "special_ui", "points_ui", "avatar_ui", "area_hud_node", "rings_ui", "extra_lives_ui")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_i2t3l")
+battle_hud_node = NodePath("Battle HUD")
+life_ui = NodePath("Battle HUD/LifeUI")
+special_ui = NodePath("Battle HUD/SpecialUI")
+points_ui = NodePath("Battle HUD/Control/PointsUI")
+avatar_ui = NodePath("Battle HUD/Control/Avatar")
+area_hud_node = NodePath("Area HUD")
+rings_ui = NodePath("Area HUD/Rings/RingsUI")
+extra_lives_ui = NodePath("Area HUD/lives/ExtraLivesUI")
+
+[node name="Battle HUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LifeUI" type="RichTextLabel" parent="Battle HUD"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 32.0
+offset_right = 615.0
+offset_bottom = 105.0
+theme = ExtResource("2_maiyj")
+theme_override_colors/default_color = Color(0, 0.964706, 0.352941, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Life: 100"
+
+[node name="SpecialUI" type="RichTextLabel" parent="Battle HUD"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 85.0
+offset_right = 665.0
+offset_bottom = 162.0
+theme = ExtResource("2_maiyj")
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Special: 100"
+
+[node name="Control" type="Control" parent="Battle HUD"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Avatar" type="TextureRect" parent="Battle HUD/Control"]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = 530.0
+offset_right = 111.0
+offset_bottom = 603.0
+texture = ExtResource("2_kygp5")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Sprite2D2" type="Sprite2D" parent="Battle HUD/Control"]
+position = Vector2(72.325, 555.872)
+scale = Vector2(4.05625, 5.48377)
+texture = ExtResource("5_j0w7h")
+region_enabled = true
+region_rect = Rect2(37.3665, 10.6161, 24.8369, 15.1936)
+
+[node name="PointsUI" type="RichTextLabel" parent="Battle HUD/Control"]
+layout_mode = 0
+offset_left = 113.0
+offset_top = 524.0
+offset_right = 271.0
+offset_bottom = 613.0
+theme = ExtResource("3_sxpx6")
+text = "0 Pt"
+
+[node name="newhud" type="Control" parent="Battle HUD"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="Battle HUD/newhud"]
+position = Vector2(44, 48)
+scale = Vector2(2, 2)
+texture = ExtResource("6_murx8")
+region_enabled = true
+region_rect = Rect2(145.364, 21.5455, 40, 47.2727)
+
+[node name="Sprite2D" type="Sprite2D" parent="Battle HUD/newhud"]
+position = Vector2(145, 55.5)
+scale = Vector2(2, 2)
+texture = ExtResource("6_murx8")
+region_enabled = true
+region_rect = Rect2(187.476, 34.121, 105.959, 33.0975)
+
+[node name="ProgressBar" type="ProgressBar" parent="Battle HUD/newhud"]
+offset_left = 53.0
+offset_top = 56.0
+offset_right = 242.0
+offset_bottom = 83.0
+theme = SubResource("Theme_as4id")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+step = 1.0
+value = 100.0
+fill_mode = 1
+
+[node name="ProgressBar2" type="ProgressBar" parent="Battle HUD/newhud"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 30.0
+offset_right = 243.0
+offset_bottom = 57.0
+theme = SubResource("Theme_58wkt")
+step = 1.0
+
+[node name="Area HUD" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="new_hud" type="Sprite2D" parent="Area HUD"]
+visible = false
+position = Vector2(100.453, 77.1052)
+scale = Vector2(1.82643, 1.84461)
+texture = ExtResource("6_0fpv5")
+region_enabled = true
+region_rect = Rect2(0, 0, 111.5, 64)
+
+[node name="TextureRect" type="TextureRect" parent="Area HUD"]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 334.0
+offset_bottom = 211.0
+texture = ExtResource("7_hoyex")
+stretch_mode = 4
+
+[node name="Rings" type="Control" parent="Area HUD"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 175.75
+offset_top = 101.21
+offset_right = 215.75
+offset_bottom = 141.21
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area HUD/Rings"]
+visible = false
+position = Vector2(55.5, 71)
+scale = Vector2(7.4, 7.47368)
+texture = ExtResource("5_j0w7h")
+region_enabled = true
+region_rect = Rect2(246.987, 1176.83, 15.8053, 19.7566)
+
+[node name="RingsUI" type="RichTextLabel" parent="Area HUD/Rings"]
+layout_mode = 0
+offset_left = -71.5
+offset_top = -158.42
+offset_right = 433.5
+offset_bottom = -69.42
+theme = ExtResource("3_sxpx6")
+text = "9999999"
+
+[node name="lives" type="Control" parent="Area HUD"]
+anchors_preset = 0
+offset_left = 11.75
+offset_top = 22.2105
+offset_right = 51.75
+offset_bottom = 62.2105
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area HUD/lives"]
+visible = false
+position = Vector2(94, 222)
+scale = Vector2(4.95, 6.27017)
+texture = ExtResource("5_j0w7h")
+region_enabled = true
+region_rect = Rect2(37.3665, 10.6161, 24.8369, 15.1936)
+
+[node name="ExtraLivesUI" type="RichTextLabel" parent="Area HUD/lives"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 140.0
+offset_right = 787.0
+offset_bottom = 229.0
+theme = ExtResource("3_sxpx6")
+text = "99"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_4b8n6")
+}
+autoplay = "hud_ring_spin"

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b4trcgernvwmr"]
+
+[ext_resource type="Texture2D" uid="uid://bde2ox6l2h6vw" path="res://Textures/groundhills.png" id="1_reneu"]
+
+[resource]
+albedo_texture = ExtResource("1_reneu")
+metallic = 0.1
+roughness = 0.61
+emission = Color(1, 0.984314, 0, 1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+proximity_fade_distance = 80.0
+distance_fade_min_distance = 8.0
+distance_fade_max_distance = 15.0
