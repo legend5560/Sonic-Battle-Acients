@@ -925,17 +925,17 @@ func scatter_rings(amount = 1):
 func handle_animation():
 	# None of these animations play when Sonic is in his hurt or attacking state.
 	if !attacking && !hurt && !healing && !chasing_aggressor && !can_spike && !hitting_wall && !guarding && !going_super:
+		#change sprite direction based on the X
+		if Input.is_action_just_pressed("left"):
+			base_sprite.flip_h = true
+			pass
+		elif Input.is_action_just_pressed("right"):
+			base_sprite.flip_h = false
 		if is_on_floor():
-			# Animations that play when Sonic is on the ground. If he's not starting movement, at least.
+				# Animations that play when Sonic is on the ground. If he's not starting movement, at least.
 			if !starting && !dashing:
 				if round(velocity.x) != 0 || round(velocity.z) != 0:
 					# player is pressing a direction
-					#change sprite direction based on the X
-					if Input.is_action_pressed("left"):
-						base_sprite.flip_h = true
-						pass
-					elif Input.is_action_pressed("right"):
-						base_sprite.flip_h = false
 					#if direction:
 					if !super_mode:
 						sprite_animation_player.play("walk")
