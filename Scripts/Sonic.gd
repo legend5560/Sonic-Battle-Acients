@@ -210,6 +210,7 @@ var special_drain_threshold: int = 10
 var special_drain_amount: int = 1
 
 # make only one $ call and store the node
+@onready var base_sprite = $Sprite3D
 @onready var sprite_animation_player = $AnimationPlayer
 @onready var model_node = $sonicrigged2
 @onready var model_animation_player = $sonicrigged2/AnimationPlayer
@@ -319,7 +320,8 @@ func _physics_process(delta):
 			damage_multiplier = 1.0
 			model_node = base_model
 			model_animation_player = base_model_anim
-			base_model.visible = true
+			#THIS IS THE VISIBLITY FOR THE 3d MODEl
+			base_model.visible = false
 			super_model.visible = false
 	
 	if !is_on_floor():
@@ -502,7 +504,7 @@ func handle_sprite_orientation():
 	#var flip_threshold = 2
 	# if the character is on idle or walk animation, flip the sprite with the input
 	#if walking or starting:
-	#	flip_threshold = 2
+	#flip_threshold = 2
 
 func handle_super():
 	if super_pressed && special_amount == 100 && !super_mode && !going_super:
@@ -928,6 +930,12 @@ func handle_animation():
 			if !starting && !dashing:
 				if round(velocity.x) != 0 || round(velocity.z) != 0:
 					# player is pressing a direction
+					#change sprite direction based on the X
+					if Input.is_action_pressed("left"):
+						base_sprite.flip_h = true
+						pass
+					elif Input.is_action_pressed("right"):
+						base_sprite.flip_h = false
 					#if direction:
 					if !super_mode:
 						sprite_animation_player.play("walk")
